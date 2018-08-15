@@ -244,7 +244,7 @@
           </div>
           [<%= comment.created_at%>]
           <% if comment.id.present? %>
-            <div class="comment-edit" data-id="<%=comment.id %>" ><%= "編集" %></div>
+            <div class="inline-block comment-edit" data-id="<%=comment.id %>" ><%= "編集" %></div>
             <div id="<%=comment.id %>-comment-edit-field" class="none comment-edit-field">
               <%= form_for([@company, comment], remote: true) do |f| %>
                 <%= f.text_area :body %>
@@ -306,6 +306,14 @@
 </tr>
 </tbody></table> </div>
 
-<ul class="comment-list">
-  <%= render :partial => "companies/comment", :collection => @company.comments, :as => "comment" %>
+<table class="comments">
+  <tr>
+    <th>申込者</th>
+    <th>開始日</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <%= render :partial => "companies/comment", :collection => @company.comments, :as => "comment", :locals => {:company => @company} %>
+  </tr>
 </ul>

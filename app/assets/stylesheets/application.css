@@ -266,6 +266,6 @@ li.progress-list-item {
   list-style-type: none;
 }
 
-.comment-edit {
+.inline-block{
   display: inline-block;
 }

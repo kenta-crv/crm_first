@@ -65,4 +65,8 @@ $(document).on('turbolinks:load', function(event) {
       $("#" + data.id + "-comment-body").toggle();
       $("#" + data.id + "-comment-edit-field").toggle();
     })
+    $(document).on("click", ".comment-edit-detail", function () {
+      data = $(this).data()
+      $("#" + data.id + "-comment-edit-detail-field").toggle();
+    })
 });
