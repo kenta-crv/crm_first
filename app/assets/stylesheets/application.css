@@ -13,9 +13,9 @@
  *= require_tree .
  *= require_self
  */
- 
- 
- 
+
+
+
                                                          /*ベース情報*/
 * {
   box-sizing: border-box;
@@ -27,24 +27,26 @@ body {
   font-family: "Hiragino Kaku Gothic ProN";
   width:100%;
  /*【バックカラー】ブルー*/
-  background-color: rgba(0,180,255,0.1);    
+  background-color: rgba(0,180,255,0.1);
 }
 a {
   text-decoration: none;
 }
-
+.none{
+  display: none;
+}
 
 
 
                                                     /*ヘッダーの始まり*/
-                                                
+
 
 /*ヘッダーのベース設定*/
 header {
   height: 65px;
   width: 100%;
    /*【バックカラー】ブルー*/
-  background-color: rgba(0,162,255,0.7);     
+  background-color: rgba(0,162,255,0.7);
   position :fixed;
   top: 0;
   z-index: 10;
@@ -106,7 +108,7 @@ header {
 
 
 
- 
+
                                                                /*メインのサイズ*/
 
 main{
@@ -137,13 +139,13 @@ td, th {
 }
 th {
     /*ブルー*/
-  background-color: rgba(0,180,255,0.8);    
+  background-color: rgba(0,180,255,0.8);
   font-weight: bold;
   width:300px;
 }
 td {
     /*グレー*/
-  background-color: #e6ecf0;    
+  background-color: #e6ecf0;
   width:200px;
 }
 
@@ -199,7 +201,7 @@ td {
 
 
                                                             /*メイン*/
-                                                            
+
 .main-wrapper {
   padding: 30px 50px 100px 0;
   background-image: url(gata.jpg);
@@ -218,8 +220,8 @@ td {
 
 
                                              /*背景色を記述しています。*/
-                                                            
-                                                            
+
+
 .base-wrapper {
   background-color: rgba(0,180,255,0.6);     /*ブルー*/
   padding-bottom: 50px;
@@ -237,7 +239,7 @@ td {
 
  .list {
     text-align: left;
-    font-size: 18px; 
+    font-size: 18px;
     line-height: 40px;
     font-weight: bold;
     opacity: 0.8;

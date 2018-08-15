@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
       case resource
       when User
         # put here for User first page direct path after signed in
-        root_path
+        super
+        #root_path
       when Admin
         # your_admin_home_path
         super # 現在は暫定的に上位継承しています
@@ -38,9 +39,9 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
-  
+
   def layout_by_resource
-    if devise_controller? 
+    if devise_controller?
        "top"
     else
       "application"

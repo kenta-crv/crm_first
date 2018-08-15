@@ -1,20 +1,20 @@
 class CompaniesController < ApplicationController
-before_action :authenticate_admin!
+before_action :authenticate_admin!, except: [:progress]
 
 
   def index
   	 @companies = Company.all.order(created_at: 'desc')
   end
-  
+
   def show
   	@company = Company.find(params[:id])
   end
-  
-  
+
+
   def new
     @company = Company.new
   end
- 
+
  def create
     @company = Company.new(company_params)
     if @company.save
@@ -24,26 +24,30 @@ before_action :authenticate_admin!
         render 'new'
     end
   end
-  
+
   def edit
     @company = Company.find(params[:id])
   end
 
  def update
     @company = Company.find(params[:id])
-     if @company.update(company_params)
-        redirect_to companies_path
+    if !@company.update(company_params)
+       render 'edit'
+       return
+    end
+    if params[:company][:ajax].present?
+      redirect_to company_path(@company)
     else
-        render 'edit'
-    end      
+      redirect_to companies_path
+    end
  end
- 
+
  def destroy
     @company = Company.find(params[:id])
     @company.destroy
     redirect_to companies_path
  end
- 
+
 
   private
     def company_params
@@ -78,7 +82,7 @@ before_action :authenticate_admin!
        :method_payment, #支払方法
        :desuction #控除
 )
-    end    
+    end
 
 
 
