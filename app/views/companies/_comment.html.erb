@@ -1,0 +1,9 @@
+<% if !(comment.normal? || comment.picture?) %>
+
+<li class="comment-list-item">
+  <% if comment.carriaup? %>
+    <%= comment.body %>
+  <% end %>
+</li>
+
+<% end %>

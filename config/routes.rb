@@ -18,7 +18,7 @@ Rails.application.routes.draw do
                                             #会社情報・就業情報
   resources :companies do
         #コメント
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy, :update]
     member do
       get :progress
     end

@@ -116,6 +116,7 @@
     <td colspan="6"><%= f.text_area :limited_comment%></td>
   </tr>
   <tr>
+    <%= f.hidden_field :status, :value => :limited %>
     <th colspan="6">
       <%= f.submit %>
     <%end%>
@@ -162,6 +163,7 @@
 <td colspan="4"><%= f.text_area :carriaup_comment %></td>
 </tr>
 <tr>
+  <%= f.hidden_field :status, :value => :carriaup %>
 <th colspan="4">
   <%= f.submit %>
 <%end%>
@@ -204,6 +206,7 @@
 </td>
 <td><%= f.date_field :system_implementation %></td>
 <td><%= f.date_field :system_supply %></td>
+<%= f.hidden_field :status, :value => :systen %>
 </tr>
 <tr>
 <th colspan="4">コメント</th>
@@ -232,20 +235,28 @@
 <th>対応履歴</th>
 </tr>
 <tr>
-<td>
-<% if @company.comments.any? %>
-<% @company.comments.each do |comment| %>
-<p>
-<%= comment.body %>
-[<%= comment.created_at%>]
-<!-- エラー吐いてたので無効化しました -->
-<% if false %>
-  <%= link_to '[削除]', company_comment_path(company_id: @company.id, id: comment.id), method: :delete, class: 'command', data: { confirm: '本当に削除しますか？' } %>
-<% end %>
-</p>
-<% end %>
-<% end %>
-</td>
+  <td>
+    <% if @company.comments.any? %>
+      <% @company.comments.each do |comment| %>
+        <p>
+          <div id="<%=comment.id %>-comment-body" class="comment-body">
+            <%= comment.body %>
+          </div>
+          [<%= comment.created_at%>]
+          <% if comment.id.present? %>
+            <div class="comment-edit" data-id="<%=comment.id %>" ><%= "編集" %></div>
+            <div id="<%=comment.id %>-comment-edit-field" class="none comment-edit-field">
+              <%= form_for([@company, comment], remote: true) do |f| %>
+                <%= f.text_area :body %>
+                <%= f.submit %>
+              <% end %>
+            </div>
+            <%= link_to '[削除]', company_comment_path(company_id: @company.id, id: comment.id), method: :delete, class: 'command', data: { confirm: '本当に削除しますか？' } %>
+          <% end %>
+        </p>
+      <% end %>
+    <% end %>
+  </td>
 </tr>
 
 <tr>
@@ -272,16 +283,20 @@
 <th colspan="2">対応履歴</th>
 </tr>
 <% if @company.comments.any? %>
-<tr>
-<td>
-<% @company.comments.each do |comment| %>
-<%= comment.picture %>
-<% end %>
-</td>
-</tr>
+  <tr>
+    <td>
+      <% @company.comments.pictures.each do |comment| %>
+        <%= comment.picture %>
+        <% if comment.id.present? %>
+          <%= link_to '[削除]', company_comment_path(company_id: @company.id, id: comment.id), method: :delete, class: 'command', data: { confirm: '本当に削除しますか？' } %>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
 <% end %>
 <tr>
 <td><%= f.file_field :picture, id: :book_picture %></td>
+<%= f.hidden_field :status, :value => :picture %>
 </tr>
 <tr>
 <th colspan="4">
@@ -290,3 +305,7 @@
 </th>
 </tr>
 </tbody></table> </div>
+
+<ul class="comment-list">
+  <%= render :partial => "companies/comment", :collection => @company.comments, :as => "comment" %>
+</ul>

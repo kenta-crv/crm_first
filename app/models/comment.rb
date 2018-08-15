@@ -31,8 +31,10 @@
 #  company_id                  :integer
 #  created_at                  :datetime         not null
 #  updated_at                  :datetime         not null
+#  status_cd                   :integer          default(0)
 #
 
 class Comment < ApplicationRecord
   belongs_to :company
+  as_enum :status, %i{normal limited carriaup system picture}
 end

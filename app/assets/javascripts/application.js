@@ -44,6 +44,8 @@ $(function() {
   });
 });
 
+
+//takigawa
 $(document).on('turbolinks:load', function(event) {
 //$(document).on('ready', function(event) {
     $(document).on("click", ".edit-link-show", function () {
@@ -58,4 +60,9 @@ $(document).on('turbolinks:load', function(event) {
     		// return false;
     	}
     } );
+    $(document).on("click", ".comment-edit", function () {
+      data = $(this).data()
+      $("#" + data.id + "-comment-body").toggle();
+      $("#" + data.id + "-comment-edit-field").toggle();
+    })
 });
