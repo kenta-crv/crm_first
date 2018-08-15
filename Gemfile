@@ -67,4 +67,5 @@ gem 'redis-rails'
 
 gem 'carrierwave'
 
-
+#add by takigawa
+gem 'annotate'
