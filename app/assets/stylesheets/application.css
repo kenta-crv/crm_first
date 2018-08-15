@@ -252,3 +252,9 @@ td {
     margin-top:25px;
     float:left;
 }
+
+
+/* atkigawa */
+li.progress-list-item{
+  list-style-type: none;
+}

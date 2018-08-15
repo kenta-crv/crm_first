@@ -10,6 +10,9 @@ before_action :authenticate_admin!, except: [:progress]
   	@company = Company.find(params[:id])
   end
 
+  def progress
+  	@company = Company.find(params[:id])
+  end
 
   def new
     @company = Company.new

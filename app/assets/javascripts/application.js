@@ -49,9 +49,9 @@ $(document).on('turbolinks:load', function(event) {
     $(document).on("click", ".edit-link-show", function () {
       data = $(this).data()
       $("#" + data.v + "-show").addClass("none")
-      $("#" + data.v + "-input-field").removeClass("none")
+      $("#" + data.v + "-c-input-field").removeClass("none")
     });
-    $(".input-field").keypress( function ( e ) {
+    $(".c-input-field").keypress( function ( e ) {
     	if ( e.which == 13 ) {
         x = $('#company-show-update').submit();
         console.log(x)
