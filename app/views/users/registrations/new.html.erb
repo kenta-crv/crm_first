@@ -1,9 +1,9 @@
   <div class="beige-wrapper">
-  
+
             <div class="heading"><h2>契約約款</h2>
             <p>※約款を必ずお読みの上、お申し込み下さい。</p></div>
-            
-            
+
+
 <div class="infobox">
 貴社（甲という。）と、株式会社Crold　Valieat（以下、「乙」という。）とは、次のとおり約款に基づき（以下、「本件契約」という。）を締結する。
 </br></br>
@@ -191,13 +191,13 @@
 
 
   <div class="base-wrapper">
-  
-            <div class="heading"><h2>事業所登録</h2>
-            <p>会社情報を入力して下さい。</p></div>
-            
+
+
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
+  <div class="heading"><h2>事業所登録</h2>
+  <p>会社情報を入力して下さい。</p></div>
 <table>
         			<colgroup>
             			<col width="40%">
@@ -284,18 +284,18 @@
 					<td><%= number_field :company, :employment_number%></td>
 				</tr>
 			</table>
-			
+
 </div>
-			
+
 
 
 
 
   <div class="beige-wrapper">
-  
+
             <div class="heading"><h2>就業規則</h2>
             <p>就業情報を入力して下さい。</p></div>
-            
+
 
 			<table>
         			<colgroup>
@@ -370,14 +370,14 @@
 				</tr>
 			</table>
 
-</div>			
+</div>
 
   <div class="green-wrapper">
-  
+
             <div class="heading"><h2>ログイン情報</h2>
             <p>ID/PASSを入力して下さい。</p></div>
-            			
-			
+
+
 			<table>
         			<colgroup>
             			<col width="40%">
@@ -387,23 +387,22 @@
 					<th>ログインアドレス<span class="label label-blue">必須</span></br>
 									<small>aaa@crold-valieat.jp</small></th>
 					<td> <%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-				</tr>		
+				</tr>
         		<tr>
 					<th>パスワード<span class="label label-blue">必須</span></br>
 									<small>*******</small></th>
 					<td><% if @minimum_password_length %>
    						 	<% end %>
     						<%= f.password_field :password, autocomplete: "off" %></td>
-				</tr>	
+				</tr>
 				<tr>
 					<th>パスワード<span class="label label-blue">必須</span></br>
 									<small>******</small></th>
 					<td><%= f.password_field :password_confirmation, autocomplete: "off" %>
 					</td>
-				</tr>		
+				</tr>
 				<tr>
 									<th colspan="2"><%= f.submit "同意して登録" %></th>
-				</tr>		
+				</tr>
             </table>
 <% end %>
-
