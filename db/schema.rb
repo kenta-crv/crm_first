@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20180815063229) do
 
   create_table "prefectures", force: :cascade do |t|
     t.string "labor"
+    t.string "minimum_wage"
     t.string "product_type"
     t.string "method"
     t.integer "tel"
