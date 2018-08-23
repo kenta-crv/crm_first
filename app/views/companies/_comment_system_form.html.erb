@@ -25,15 +25,15 @@
         ["キャリア形成促進助成金（技能検定合格報奨金制度）","キャリア形成促進助成金（技能検定合格報奨金制度）"], ["キャリア形成促進助成金（教育訓練休暇等制度）","キャリア形成促進助成金（教育訓練休暇等制度）"], ["人材開発支援等助成金（セルフキャリアドッグ制度）","人材開発支援等助成金（セルフキャリアドッグ制度）"], ["人材開発支援等助成金（技能検定合格報奨金制度）","人材開発支援等助成金（技能検定合格報奨金制度）"],
         ["人材開発支援等助成金（教育訓練休暇等制度）","人材開発支援等助成金（教育訓練休暇等制度）"], ], selected: comment.system_each_name) %>
       </td>
-      <td><%= f.date_field :system_implementation %></td>
-      <td><%= f.date_field :system_supply %></td>
+      <td><%= f.date_field :system_implementation, :value => comment.system_implementation %></td>
+      <td><%= f.date_field :system_supply, :value => comment.system_supply %></td>
       <%= f.hidden_field :status, :value => :system %>
     </tr>
     <tr>
       <th colspan="4">コメント</th>
     </tr>
     <tr>
-      <td colspan="4"><%= f.text_area :system_comment %></td>
+      <td colspan="4"><%= f.text_area :system_comment, :value => comment.system_comment %></td>
     </tr>
     <tr>
       <th colspan="4">
