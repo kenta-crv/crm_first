@@ -5,12 +5,22 @@ class CommentsController < ApplicationController
     @company.comments.create(comment_params)
     redirect_to company_path(@company)
   end
-  
+
   def destroy
     @company = Company.find(params[:company_id])
     @comment = @company.comments.find(params[:id])
     @comment.destroy
     redirect_to company_path(@company)
+  end
+
+  def update
+      @company = Company.find(params[:company_id])
+      @comment = @company.comments.find(params[:id])
+     if @comment.update(comment_params)
+       redirect_to company_path(@company)
+     else
+        render 'edit'
+     end
   end
 
   private
@@ -40,15 +50,17 @@ class CommentsController < ApplicationController
       :carriaup_each_regular, #転換日
       :carriaup_each_supply, #支給申請開始日
       :carriaup_comment, #コメント
-      
-      
+
+
       :system_progress, #進捗
       :system_start, #制度開始日
       :system_subsidyname, #助成金
       :system_each_name, #制度
       :system_implementation, #実施日
       :system_supply,  #支給申請開始日
-      :system_comment #コメント
+      :system_comment, #コメント
+
+      :status
 
 
       )
