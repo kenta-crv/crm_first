@@ -1,14 +1,46 @@
 <% if comment.carriaup? %>
 
 <tr class="comment">
+    <!-- <th><%="申込者" %></th> -->
     <td><%= comment.carriaup_each_name %></td>
-    <td><%= comment.carriaup_each_supply %></td>
+    <!-- <th><%="開始日" %></th> -->
+    <td><%= comment.carriaup_start %></td>
     <td class="comment-edit-detail" data-id="<%=comment.id %>" ><%= "編集" %></td>
     <td><%= link_to '[削除]', company_comment_path(company_id: company.id, id: comment.id), method: :delete, class: 'command', data: { confirm: '本当に削除しますか？' } %></td>
 </tr>
 <tr id="<%=comment.id %>-comment-edit-detail-field" class="none comment-edit-detail-field">
   <td colspan="4">
     <%= render :partial => "companies/comment_carriaup_form", :locals => {:company => company, :comment => comment} %>
+  </td>
+</tr>
+
+<% elsif comment.limited? %>
+
+<tr class="comment">
+    <!-- <th><%="申込者" %></th> -->
+    <td><%= comment.limited_each_name %></td>
+    <!-- <th><%="開始日" %></th> -->
+    <td><%= comment.limited_each_start %></td>
+    <td class="comment-edit-detail" data-id="<%=comment.id %>" ><%= "編集" %></td>
+    <td><%= link_to '[削除]', company_comment_path(company_id: company.id, id: comment.id), method: :delete, class: 'command', data: { confirm: '本当に削除しますか？' } %></td>
+</tr>
+<tr id="<%=comment.id %>-comment-edit-detail-field" class="none comment-edit-detail-field">
+  <td colspan="4">
+    <%= render :partial => "companies/comment_limited_form", :locals => {:company => company, :comment => comment} %>
+  </td>
+</tr>
+
+<% elsif comment.system? %>
+
+<tr class="comment">
+    <th><%="開始日" %></th>
+    <td><%= comment.system_start %></td>
+    <td class="comment-edit-detail" data-id="<%=comment.id %>" ><%= "編集" %></td>
+    <td><%= link_to '[削除]', company_comment_path(company_id: company.id, id: comment.id), method: :delete, class: 'command', data: { confirm: '本当に削除しますか？' } %></td>
+</tr>
+<tr id="<%=comment.id %>-comment-edit-detail-field" class="none comment-edit-detail-field">
+  <td colspan="4">
+    <%= render :partial => "companies/comment_system_form", :locals => {:company => company, :comment => comment} %>
   </td>
 </tr>
 

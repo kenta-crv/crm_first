@@ -48,6 +48,7 @@ $(function() {
 //takigawa
 $(document).on('turbolinks:load', function(event) {
 //$(document).on('ready', function(event) {
+    //company/:id
     $(document).on("click", ".edit-link-show", function () {
       data = $(this).data()
       $("#" + data.v + "-show").addClass("none")
@@ -56,7 +57,6 @@ $(document).on('turbolinks:load', function(event) {
     $(".c-input-field").keypress( function ( e ) {
     	if ( e.which == 13 ) {
         x = $('#company-show-update').submit();
-        console.log(x)
     		// return false;
     	}
     } );
